@@ -31,6 +31,9 @@ export default defineConfig((config) => {
     build: {
       target: 'esnext',
     },
+    server: {
+      allowedHosts: ['kingcopiebolt-diy.onrender.com'],
+    },
     plugins: [
       nodePolyfills({
         include: ['path', 'buffer', 'process'],
