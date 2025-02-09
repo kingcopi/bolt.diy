@@ -1,4 +1,3 @@
-import { defineConfig, type ViteDevServer } from 'vite';
 import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
 import UnoCSS from 'unocss/vite';
 import { defineConfig, type ViteDevServer } from 'vite';
@@ -38,10 +37,7 @@ export default defineConfig((config) => {
   allowedHosts: ['kingcopiebolt-diy.onrender.com'],
     },
     },
-    server: {
-      allowedHosts: ['kingcopiebolt-diy.onrender.com'],
-    },
-    plugins: [
+     plugins: [
       nodePolyfills({
         include: ['path', 'buffer', 'process'],
       }),
