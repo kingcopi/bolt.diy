@@ -1,3 +1,4 @@
+import { defineConfig, type ViteDevServer } from 'vite';
 import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
 import UnoCSS from 'unocss/vite';
 import { defineConfig, type ViteDevServer } from 'vite';
@@ -6,7 +7,6 @@ import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import * as dotenv from 'dotenv';
 import { execSync } from 'child_process';
-import { defineConfig, type ViteDevServer } from 'vite';
 
 dotenv.config();
 
@@ -32,11 +32,14 @@ export default defineConfig((config) => {
     build: {
       target: 'esnext',
        server: {
-  host: '0.0.0.0',
-  port: process.env.PORT ? parseInt(process.env.PORT) : 10000,
-  strictPort: true,
-  allowedHosts: ['kingcopiebolt-diy.onrender.com'],
-},
+      port: Number(process.env.PORT) || 5173,
+      host: '0.0.0.0',
+      allowedHosts: ['kingcopiebolt-diy.onrender.com'],
+    },
+    },
+    server: {
+      allowedHosts: ['kingcopiebolt-diy.onrender.com'],
+    },
     plugins: [
       nodePolyfills({
         include: ['path', 'buffer', 'process'],
