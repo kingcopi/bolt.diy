@@ -31,14 +31,11 @@ export default defineConfig((config) => {
     build: {
       target: 'esnext',
        server: {
-      port: Number(process.env.PORT) || 5173,
-      host: '0.0.0.0',
-      allowedHosts: ['kingcopiebolt-diy.onrender.com'],
-    },
-    },
-    server: {
-      allowedHosts: ['kingcopiebolt-diy.onrender.com'],
-    },
+  host: '0.0.0.0',
+  port: process.env.PORT ? parseInt(process.env.PORT) : 10000,
+  strictPort: true,
+  allowedHosts: ['kingcopiebolt-diy.onrender.com'],
+},
     plugins: [
       nodePolyfills({
         include: ['path', 'buffer', 'process'],
